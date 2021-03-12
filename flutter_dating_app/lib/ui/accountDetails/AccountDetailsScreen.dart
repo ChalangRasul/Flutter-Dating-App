@@ -395,7 +395,7 @@ class _AccountDetailsScreenState extends State<AccountDetailsScreen> {
         TextEditingController _passwordController = new TextEditingController();
         showDialog(
             context: context,
-            child: Dialog(
+            builder: (BuildContext context) => Dialog(
               elevation: 16,
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(40)),
