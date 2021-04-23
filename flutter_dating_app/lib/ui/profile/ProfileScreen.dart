@@ -113,11 +113,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 ),
                 _pages.length >= 2
                     ? CirclePageIndicator(
-                  selectedDotColor: Color(COLOR_ACCENT),
-                  dotColor: Colors.grey,
-                  itemCount: _pages.length,
-                  currentPageNotifier: _currentPageNotifier,
-                )
+                        selectedDotColor: Color(COLOR_ACCENT),
+                        dotColor: Colors.grey,
+                        itemCount: _pages.length,
+                        currentPageNotifier: _currentPageNotifier,
+                      )
                     : null
               ]),
             ),
@@ -150,34 +150,34 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   color: Colors.blue,
                 ),
               ),
-              ListTile(
-                dense: true,
-                onTap: () {
-                  showModalBottomSheet(
-                    isScrollControlled: true,
-                    context: context,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.vertical(
-                        top: Radius.circular(20),
-                      ),
-                    ),
-                    builder: (context) {
-                      return UpgradeAccount();
-                    },
-                  );
-                },
-                title: Text(
-                  user.isVip != null && user.isVip
-                      ? 'Cancel subscription'
-                      : 'Upgrade Account',
-                  style: TextStyle(fontSize: 16),
-                ),
-                leading: Image.asset(
-                  'assets/images/vip.png',
-                  height: 24,
-                  width: 24,
-                ),
-              ),
+              // ListTile(
+              //   dense: true,
+              //   onTap: () {
+              //     showModalBottomSheet(
+              //       isScrollControlled: true,
+              //       context: context,
+              //       shape: RoundedRectangleBorder(
+              //         borderRadius: BorderRadius.vertical(
+              //           top: Radius.circular(20),
+              //         ),
+              //       ),
+              //       builder: (context) {
+              //         return UpgradeAccount();
+              //       },
+              //     );
+              //   },
+              //   title: Text(
+              //     user.isVip != null && user.isVip
+              //         ? 'Cancel subscription'
+              //         : 'Upgrade Account',
+              //     style: TextStyle(fontSize: 16),
+              //   ),
+              //   leading: Image.asset(
+              //     'assets/images/vip.png',
+              //     height: 24,
+              //     width: 24,
+              //   ),
+              // ),
               ListTile(
                 dense: true,
                 onTap: () {
@@ -284,7 +284,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
           onPressed: () async {
             Navigator.pop(context);
             PickedFile image =
-            await _imagePicker.getImage(source: ImageSource.camera);
+                await _imagePicker.getImage(source: ImageSource.camera);
             if (image != null) {
               await _imagePicked(File(image.path));
             }
@@ -326,32 +326,32 @@ class _ProfileScreenState extends State<ProfileScreen> {
         color: Color(COLOR_PRIMARY),
         child: isLastItem
             ? Icon(
-          Icons.camera_alt,
-          size: 50,
-          color: isDarkMode(context) ? Colors.black : Colors.white,
-        )
+                Icons.camera_alt,
+                size: 50,
+                color: isDarkMode(context) ? Colors.black : Colors.white,
+              )
             : ClipRRect(
-          borderRadius: BorderRadius.circular(12),
-          child: CachedNetworkImage(
-            fit: BoxFit.cover,
-            imageUrl:
-            user.profilePictureURL == DEFAULT_AVATAR_URL ? '' : url,
-            placeholder: (context, imageUrl) {
-              return Icon(
-                Icons.hourglass_empty,
-                size: 75,
-                color: isDarkMode(context) ? Colors.black : Colors.white,
-              );
-            },
-            errorWidget: (context, imageUrl, error) {
-              return Icon(
-                Icons.error_outline,
-                size: 75,
-                color: isDarkMode(context) ? Colors.black : Colors.white,
-              );
-            },
-          ),
-        ),
+                borderRadius: BorderRadius.circular(12),
+                child: CachedNetworkImage(
+                  fit: BoxFit.cover,
+                  imageUrl:
+                      user.profilePictureURL == DEFAULT_AVATAR_URL ? '' : url,
+                  placeholder: (context, imageUrl) {
+                    return Icon(
+                      Icons.hourglass_empty,
+                      size: 75,
+                      color: isDarkMode(context) ? Colors.black : Colors.white,
+                    );
+                  },
+                  errorWidget: (context, imageUrl, error) {
+                    return Icon(
+                      Icons.error_outline,
+                      size: 75,
+                      color: isDarkMode(context) ? Colors.black : Colors.white,
+                    );
+                  },
+                ),
+              ),
       ),
     );
   }
@@ -390,8 +390,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
             images.remove(url);
             await _fireStoreUtils.deleteImage(url);
             user.photos = images;
-            User newUser =
-            await FireStoreUtils.updateCurrentUser(user);
+            User newUser = await FireStoreUtils.updateCurrentUser(user);
             MyAppState.currentUser = newUser;
             user = newUser;
             images.add(null);
@@ -442,15 +441,14 @@ class _ProfileScreenState extends State<ProfileScreen> {
           onPressed: () async {
             Navigator.pop(context);
             PickedFile image =
-            await _imagePicker.getImage(source: ImageSource.gallery);
+                await _imagePicker.getImage(source: ImageSource.gallery);
             if (image != null) {
               Url imageUrl = await _fireStoreUtils.uploadChatImageToFireStorage(
                   File(image.path), context);
               images.removeLast();
               images.add(imageUrl.url);
               user.photos = images;
-              User newUser =
-              await FireStoreUtils.updateCurrentUser(user);
+              User newUser = await FireStoreUtils.updateCurrentUser(user);
               MyAppState.currentUser = newUser;
               user = newUser;
               images.add(null);
@@ -464,15 +462,14 @@ class _ProfileScreenState extends State<ProfileScreen> {
           onPressed: () async {
             Navigator.pop(context);
             PickedFile image =
-            await _imagePicker.getImage(source: ImageSource.camera);
+                await _imagePicker.getImage(source: ImageSource.camera);
             if (image != null) {
               Url imageUrl = await _fireStoreUtils.uploadChatImageToFireStorage(
                   File(image.path), context);
               images.removeLast();
               images.add(imageUrl.url);
               user.photos = images;
-              User newUser =
-              await FireStoreUtils.updateCurrentUser(user);
+              User newUser = await FireStoreUtils.updateCurrentUser(user);
               MyAppState.currentUser = newUser;
               user = newUser;
               images.add(null);

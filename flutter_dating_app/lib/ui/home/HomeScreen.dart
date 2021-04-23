@@ -182,9 +182,9 @@ class _HomeState extends State<HomeScreen> {
                           members: [caller]),
                       isCaller: false,
                       sessionDescription: callDocument.data()['data']
-                      ['description']['sdp'],
+                          ['description']['sdp'],
                       sessionType: callDocument.data()['data']['description']
-                      ['type']),
+                          ['type']),
                 );
               }
             } else if (callType == VOICE) {
@@ -226,9 +226,9 @@ class _HomeState extends State<HomeScreen> {
                           members: [caller]),
                       isCaller: false,
                       sessionDescription: callDocument.data()['data']
-                      ['description']['sdp'],
+                          ['description']['sdp'],
                       sessionType: callDocument.data()['data']['description']
-                      ['type']),
+                          ['type']),
                 );
               }
             }
