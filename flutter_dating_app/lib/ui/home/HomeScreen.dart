@@ -67,7 +67,7 @@ class _HomeState extends State<HomeScreen> {
                   });
                 },
                 child: Image.asset(
-                  'assets/images/app_logo.png',
+                  'assets/images/phitnestNegative.png',
                   width: _appBarTitle == 'Swipe' ? 40 : 24,
                   height: _appBarTitle == 'Swipe' ? 40 : 24,
                   color: _appBarTitle == 'Swipe'

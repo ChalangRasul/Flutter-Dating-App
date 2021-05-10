@@ -17,7 +17,7 @@ class AuthScreen extends StatelessWidget {
               child: Padding(
                 padding: const EdgeInsets.only(top: 70.0, bottom: 20.0),
                 child: Image.asset(
-                  'assets/images/app_logo.png',
+                  'assets/images/phitnestNegative.png',
                   width: 150.0,
                   height: 150.0,
                   color: Color(Constants.COLOR_PRIMARY),

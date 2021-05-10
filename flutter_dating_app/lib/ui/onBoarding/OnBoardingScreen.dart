@@ -22,7 +22,7 @@ final List<String> _subtitlesList = [
 ];
 
 final List<dynamic> _imageList = [
-  'assets/images/app_logo.png',
+  'assets/images/phitnestNegative.png',
   Icons.chat_bubble_outline,
   Icons.photo_camera,
   Icons.notifications_none
@@ -156,21 +156,21 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
         body: Stack(
-          children: <Widget>[
-            PageView(
-              children: populatePages(context),
-              onPageChanged: (int index) {
-                _currentPageNotifier.value = index;
-              },
-            ),
-            Padding(
-              padding: const EdgeInsets.only(bottom: 50.0),
-              child: Align(
-                alignment: Alignment.bottomCenter,
-                child: _buildCircleIndicator(),
-              ),
-            )
-          ],
-        ));
+      children: <Widget>[
+        PageView(
+          children: populatePages(context),
+          onPageChanged: (int index) {
+            _currentPageNotifier.value = index;
+          },
+        ),
+        Padding(
+          padding: const EdgeInsets.only(bottom: 50.0),
+          child: Align(
+            alignment: Alignment.bottomCenter,
+            child: _buildCircleIndicator(),
+          ),
+        )
+      ],
+    ));
   }
 }

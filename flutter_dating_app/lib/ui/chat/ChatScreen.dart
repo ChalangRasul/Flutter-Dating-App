@@ -85,72 +85,72 @@ class _ChatScreenState extends State<ChatScreen> {
     return Scaffold(
       appBar: AppBar(
         actions: <Widget>[
-          CALLS_ENABLED
-              ? IconButton(
-                  tooltip: 'Voice call',
-                  iconSize: 20,
-                  constraints: BoxConstraints(maxWidth: 24, maxHeight: 24),
-                  icon: Icon(Icons.call),
-                  onPressed: () {
-                    homeConversationModel.isGroupChat
-                        ? push(
-                            context,
-                            VoiceCallsGroupScreen(
-                              isCaller: true,
-                              homeConversationModel: homeConversationModel,
-                              sessionDescription: null,
-                              sessionType: null,
-                              caller: MyAppState.currentUser,
-                            ))
-                        : push(
-                            context,
-                            VoiceCallScreen(
-                              isCaller: true,
-                              homeConversationModel: homeConversationModel,
-                              sessionDescription: null,
-                              sessionType: null,
-                            ));
-                  },
-                  color:
-                      isDarkMode(context) ? Colors.grey.shade200 : Colors.white,
-                )
-              : Container(
-                  width: 0,
-                  height: 0,
-                ),
-          CALLS_ENABLED
-              ? IconButton(
-                  tooltip: 'Video call',
-                  constraints: BoxConstraints(maxWidth: 24, maxHeight: 24),
-                  iconSize: 20,
-                  icon: Icon(Icons.videocam),
-                  onPressed: () {
-                    homeConversationModel.isGroupChat
-                        ? push(
-                            context,
-                            VideoCallsGroupScreen(
-                              isCaller: true,
-                              homeConversationModel: homeConversationModel,
-                              sessionDescription: null,
-                              sessionType: null,
-                              caller: MyAppState.currentUser,
-                            ))
-                        : push(
-                            context,
-                            VideoCallScreen(
-                              isCaller: true,
-                              homeConversationModel: homeConversationModel,
-                              sessionDescription: null,
-                              sessionType: null,
-                            ));
-                  },
-                  color:
-                      isDarkMode(context) ? Colors.grey.shade200 : Colors.white,
-                )
-              : Container(
-                  width: 0,
-                  height: 0,
-                ),
+          // CALLS_ENABLED
+          //     ? IconButton(
+          //         tooltip: 'Voice call',
+          //         iconSize: 20,
+          //         constraints: BoxConstraints(maxWidth: 24, maxHeight: 24),
+          //         icon: Icon(Icons.call),
+          //         onPressed: () {
+          //           homeConversationModel.isGroupChat
+          //               ? push(
+          //                   context,
+          //                   VoiceCallsGroupScreen(
+          //                     isCaller: true,
+          //                     homeConversationModel: homeConversationModel,
+          //                     sessionDescription: null,
+          //                     sessionType: null,
+          //                     caller: MyAppState.currentUser,
+          //                   ))
+          //               : push(
+          //                   context,
+          //                   VoiceCallScreen(
+          //                     isCaller: true,
+          //                     homeConversationModel: homeConversationModel,
+          //                     sessionDescription: null,
+          //                     sessionType: null,
+          //                   ));
+          //         },
+          //         color:
+          //             isDarkMode(context) ? Colors.grey.shade200 : Colors.white,
+          //       )
+          //     : Container(
+          //         width: 0,
+          //         height: 0,
+          //       ),
+          // CALLS_ENABLED
+          //     ? IconButton(
+          //         tooltip: 'Video call',
+          //         constraints: BoxConstraints(maxWidth: 24, maxHeight: 24),
+          //         iconSize: 20,
+          //         icon: Icon(Icons.videocam),
+          //         onPressed: () {
+          //           homeConversationModel.isGroupChat
+          //               ? push(
+          //                   context,
+          //                   VideoCallsGroupScreen(
+          //                     isCaller: true,
+          //                     homeConversationModel: homeConversationModel,
+          //                     sessionDescription: null,
+          //                     sessionType: null,
+          //                     caller: MyAppState.currentUser,
+          //                   ))
+          //               : push(
+          //                   context,
+          //                   VideoCallScreen(
+          //                     isCaller: true,
+          //                     homeConversationModel: homeConversationModel,
+          //                     sessionDescription: null,
+          //                     sessionType: null,
+          //                   ));
+          //         },
+          //         color:
+          //             isDarkMode(context) ? Colors.grey.shade200 : Colors.white,
+          //       )
+          //     : Container(
+          //         width: 0,
+          //         height: 0,
+          //       ),
           PopupMenuButton(
             itemBuilder: (BuildContext context) {
               return [
@@ -204,19 +204,19 @@ class _ChatScreenState extends State<ChatScreen> {
                             : Colors.white,
                         fontWeight: FontWeight.bold),
                   ),
-            homeConversationModel.members.first.lastOnlineTimestamp !=
-                null
-                ? Padding(
-              padding: const EdgeInsets.all(2.0),
-              child: buildSubTitle(
-                  homeConversationModel.members.first),
-            )
-                : Container(
-              width: 0,
-              height: 0,
-            )
-          ],
-        ),
+                  homeConversationModel.members.first.lastOnlineTimestamp !=
+                          null
+                      ? Padding(
+                          padding: const EdgeInsets.all(2.0),
+                          child: buildSubTitle(
+                              homeConversationModel.members.first),
+                        )
+                      : Container(
+                          width: 0,
+                          height: 0,
+                        )
+                ],
+              ),
       ),
       body: Builder(builder: (BuildContext innerContext) {
         return Padding(
@@ -282,7 +282,7 @@ class _ChatScreenState extends State<ChatScreen> {
                                       Radius.circular(360),
                                     ),
                                     borderSide:
-                                    BorderSide(style: BorderStyle.none)),
+                                        BorderSide(style: BorderStyle.none)),
                                 color: isDarkMode(context)
                                     ? Colors.grey[700]
                                     : Colors.grey.shade200,
@@ -294,7 +294,7 @@ class _ChatScreenState extends State<ChatScreen> {
                                     child: Icon(
                                       Icons.mic,
                                       color: currentRecordingState ==
-                                          RecordingState.HIDDEN
+                                              RecordingState.HIDDEN
                                           ? Color(COLOR_PRIMARY)
                                           : Colors.red,
                                     ),
@@ -311,7 +311,7 @@ class _ChatScreenState extends State<ChatScreen> {
                                         });
                                       },
                                       textAlignVertical:
-                                      TextAlignVertical.center,
+                                          TextAlignVertical.center,
                                       controller: _messageController,
                                       decoration: InputDecoration(
                                         isDense: true,
@@ -319,7 +319,7 @@ class _ChatScreenState extends State<ChatScreen> {
                                             vertical: 8, horizontal: 8),
                                         hintText: 'Start typing...',
                                         hintStyle:
-                                        TextStyle(color: Colors.grey[400]),
+                                            TextStyle(color: Colors.grey[400]),
                                         focusedBorder: OutlineInputBorder(
                                             borderRadius: BorderRadius.all(
                                               Radius.circular(360),
@@ -334,7 +334,7 @@ class _ChatScreenState extends State<ChatScreen> {
                                                 style: BorderStyle.none)),
                                       ),
                                       textCapitalization:
-                                      TextCapitalization.sentences,
+                                          TextCapitalization.sentences,
                                       maxLines: 5,
                                       minLines: 1,
                                       keyboardType: TextInputType.multiline,
@@ -434,7 +434,7 @@ class _ChatScreenState extends State<ChatScreen> {
                       width: double.infinity,
                       child: Visibility(
                         visible:
-                        currentRecordingState == RecordingState.VISIBLE,
+                            currentRecordingState == RecordingState.VISIBLE,
                         child: RaisedButton(
                           color: Colors.red,
                           child: Text(
@@ -456,10 +456,7 @@ class _ChatScreenState extends State<ChatScreen> {
               )
             ],
           ),
-          height: MediaQuery
-              .of(context)
-              .size
-              .height * .3,
+          height: MediaQuery.of(context).size.height * .3,
         ));
   }
 
@@ -467,7 +464,7 @@ class _ChatScreenState extends State<ChatScreen> {
     String text = friend.active
         ? 'Active now'
         : 'Last seen on '
-        '${setLastSeen(friend.lastOnlineTimestamp?.seconds ?? 0)}';
+            '${setLastSeen(friend.lastOnlineTimestamp?.seconds ?? 0)}';
     return Text(text,
         style: TextStyle(fontSize: 15, color: Colors.grey.shade200));
   }
@@ -532,7 +529,7 @@ class _ChatScreenState extends State<ChatScreen> {
           onPressed: () async {
             Navigator.pop(context);
             PickedFile image =
-            await _imagePicker.getImage(source: ImageSource.gallery);
+                await _imagePicker.getImage(source: ImageSource.gallery);
             if (image != null) {
               Url url = await _fireStoreUtils.uploadChatImageToFireStorage(
                   File(image.path), context);
@@ -546,11 +543,11 @@ class _ChatScreenState extends State<ChatScreen> {
           onPressed: () async {
             Navigator.pop(context);
             PickedFile galleryVideo =
-            await _imagePicker.getVideo(source: ImageSource.gallery);
+                await _imagePicker.getVideo(source: ImageSource.gallery);
             if (galleryVideo != null) {
               ChatVideoContainer videoContainer =
-              await _fireStoreUtils.uploadChatVideoToFireStorage(
-                  File(galleryVideo.path), context);
+                  await _fireStoreUtils.uploadChatVideoToFireStorage(
+                      File(galleryVideo.path), context);
               _sendMessage(
                   '', videoContainer.videoUrl, videoContainer.thumbnailUrl);
             }
@@ -562,7 +559,7 @@ class _ChatScreenState extends State<ChatScreen> {
           onPressed: () async {
             Navigator.pop(context);
             PickedFile image =
-            await _imagePicker.getImage(source: ImageSource.camera);
+                await _imagePicker.getImage(source: ImageSource.camera);
             if (image != null) {
               Url url = await _fireStoreUtils.uploadChatImageToFireStorage(
                   File(image.path), context);
@@ -576,11 +573,11 @@ class _ChatScreenState extends State<ChatScreen> {
           onPressed: () async {
             Navigator.pop(context);
             PickedFile recordedVideo =
-            await _imagePicker.getVideo(source: ImageSource.camera);
+                await _imagePicker.getVideo(source: ImageSource.camera);
             if (recordedVideo != null) {
               ChatVideoContainer videoContainer =
-              await _fireStoreUtils.uploadChatVideoToFireStorage(
-                  File(recordedVideo.path), context);
+                  await _fireStoreUtils.uploadChatVideoToFireStorage(
+                      File(recordedVideo.path), context);
               _sendMessage(
                   '', videoContainer.videoUrl, videoContainer.thumbnailUrl);
             }
@@ -716,27 +713,27 @@ class _ChatScreenState extends State<ChatScreen> {
               ),
               messageData.videoThumbnail.isNotEmpty
                   ? FloatingActionButton(
-                mini: true,
-                heroTag: messageData.messageID,
-                backgroundColor: Color(COLOR_ACCENT),
-                onPressed: () {
-                  push(
-                      context,
-                      FullScreenVideoViewer(
-                        heroTag: messageData.messageID,
-                        videoUrl: messageData.url.url,
-                      ));
-                },
-                child: Icon(
-                  Icons.play_arrow,
-                  color:
-                  isDarkMode(context) ? Colors.black : Colors.white,
-                ),
-              )
+                      mini: true,
+                      heroTag: messageData.messageID,
+                      backgroundColor: Color(COLOR_ACCENT),
+                      onPressed: () {
+                        push(
+                            context,
+                            FullScreenVideoViewer(
+                              heroTag: messageData.messageID,
+                              videoUrl: messageData.url.url,
+                            ));
+                      },
+                      child: Icon(
+                        Icons.play_arrow,
+                        color:
+                            isDarkMode(context) ? Colors.black : Colors.white,
+                      ),
+                    )
                   : Container(
-                width: 0,
-                height: 0,
-              )
+                      width: 0,
+                      height: 0,
+                    )
             ]),
           ));
     } else {
@@ -812,9 +809,9 @@ class _ChatScreenState extends State<ChatScreen> {
                     height: 8,
                     decoration: BoxDecoration(
                         color: homeConversationModel.members
-                            .firstWhere((element) =>
-                        element.userID == messageData.senderID)
-                            .active
+                                .firstWhere((element) =>
+                                    element.userID == messageData.senderID)
+                                .active
                             ? Colors.green
                             : Colors.grey,
                         borderRadius: BorderRadius.circular(100),
@@ -867,7 +864,7 @@ class _ChatScreenState extends State<ChatScreen> {
             child: Container(
               decoration: BoxDecoration(
                   color:
-                  isDarkMode(context) ? Colors.grey[600] : Colors.grey[300],
+                      isDarkMode(context) ? Colors.grey[600] : Colors.grey[300],
                   shape: BoxShape.rectangle,
                   borderRadius: BorderRadius.all(Radius.circular(8))),
               child: Padding(
@@ -925,27 +922,27 @@ class _ChatScreenState extends State<ChatScreen> {
               ),
               messageData.videoThumbnail.isNotEmpty
                   ? FloatingActionButton(
-                mini: true,
-                heroTag: messageData.messageID,
-                backgroundColor: Color(COLOR_ACCENT),
-                onPressed: () {
-                  push(
-                      context,
-                      FullScreenVideoViewer(
-                        heroTag: messageData.messageID,
-                        videoUrl: messageData.url.url,
-                      ));
-                },
-                child: Icon(
-                  Icons.play_arrow,
-                  color:
-                  isDarkMode(context) ? Colors.black : Colors.white,
-                ),
-              )
+                      mini: true,
+                      heroTag: messageData.messageID,
+                      backgroundColor: Color(COLOR_ACCENT),
+                      onPressed: () {
+                        push(
+                            context,
+                            FullScreenVideoViewer(
+                              heroTag: messageData.messageID,
+                              videoUrl: messageData.url.url,
+                            ));
+                      },
+                      child: Icon(
+                        Icons.play_arrow,
+                        color:
+                            isDarkMode(context) ? Colors.black : Colors.white,
+                      ),
+                    )
                   : Container(
-                width: 0,
-                height: 0,
-              )
+                      width: 0,
+                      height: 0,
+                    )
             ]),
           ));
     } else {
@@ -970,7 +967,7 @@ class _ChatScreenState extends State<ChatScreen> {
             child: Container(
               decoration: BoxDecoration(
                   color:
-                  isDarkMode(context) ? Colors.grey[600] : Colors.grey[300],
+                      isDarkMode(context) ? Colors.grey[600] : Colors.grey[300],
                   shape: BoxShape.rectangle,
                   borderRadius: BorderRadius.all(Radius.circular(8))),
               child: Padding(
@@ -1026,7 +1023,7 @@ class _ChatScreenState extends State<ChatScreen> {
           lastMessage: ''
               '${user.fullName()} sent a message');
       bool isSuccessful =
-      await _fireStoreUtils.createConversation(conversation);
+          await _fireStoreUtils.createConversation(conversation);
       if (isSuccessful) {
         homeConversationModel.conversationModel = conversation;
         setupStream();
@@ -1056,7 +1053,7 @@ class _ChatScreenState extends State<ChatScreen> {
           recipientID: homeConversationModel.members.first.userID,
           recipientLastName: homeConversationModel.members.first.lastName,
           recipientProfilePictureURL:
-          homeConversationModel.members.first.profilePictureURL,
+              homeConversationModel.members.first.profilePictureURL,
           senderFirstName: MyAppState.currentUser.firstName,
           senderID: MyAppState.currentUser.userID,
           senderLastName: MyAppState.currentUser.lastName,
@@ -1145,7 +1142,7 @@ class _ChatScreenState extends State<ChatScreen> {
                           onPressed: () async {
                             if (_groupNameController.text.isNotEmpty) {
                               if (homeConversationModel
-                                  .conversationModel.name !=
+                                      .conversationModel.name !=
                                   _groupNameController.text) {
                                 showProgress(context,
                                     'Renaming group, Please wait...', false);
@@ -1187,15 +1184,13 @@ class _ChatScreenState extends State<ChatScreen> {
             if (isSuccessful) {
               Navigator.pop(context);
               _showAlertDialog(context, 'Block',
-                  '${homeConversationModel.members.first
-                      .fullName()} has been blocked.');
+                  '${homeConversationModel.members.first.fullName()} has been blocked.');
             } else {
               _showAlertDialog(
                   context,
                   'Block',
                   'Couldn'
-                      '\'t block ${homeConversationModel.members.first
-                      .fullName()}, please try again later.');
+                      '\'t block ${homeConversationModel.members.first.fullName()}, please try again later.');
             }
           },
         ),
@@ -1210,15 +1205,13 @@ class _ChatScreenState extends State<ChatScreen> {
             if (isSuccessful) {
               Navigator.pop(context);
               _showAlertDialog(context, 'Report',
-                  '${homeConversationModel.members.first
-                      .fullName()} has been reported and blocked.');
+                  '${homeConversationModel.members.first.fullName()} has been reported and blocked.');
             } else {
               _showAlertDialog(
                   context,
                   'Report',
                   'Couldn'
-                      '\'t report ${homeConversationModel.members.first
-                      .fullName()}, please try again later.');
+                      '\'t report ${homeConversationModel.members.first.fullName()}, please try again later.');
             }
           },
         ),
@@ -1269,11 +1262,10 @@ class _ChatScreenState extends State<ChatScreen> {
       currentRecordingState = RecordingState.HIDDEN;
     });
     Url url =
-    await _fireStoreUtils.uploadAudioFile(File(_recording.path), context);
+        await _fireStoreUtils.uploadAudioFile(File(_recording.path), context);
 
     _sendMessage('', url, '');
-    Directory(_recording.path)
-      ..deleteSync(recursive: true);
+    Directory(_recording.path)..deleteSync(recursive: true);
   }
 
   _onCancelRecording() async {
