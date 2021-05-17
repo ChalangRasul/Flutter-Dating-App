@@ -18,8 +18,8 @@ class AuthScreen extends StatelessWidget {
                 padding: const EdgeInsets.only(top: 70.0, bottom: 20.0),
                 child: Image.asset(
                   'assets/images/phitnestNegative.png',
-                  width: 150.0,
-                  height: 150.0,
+                  width: 153.0,
+                  height: 220.0,
                   color: Color(Constants.COLOR_PRIMARY),
                   fit: BoxFit.cover,
                 ),
@@ -27,9 +27,9 @@ class AuthScreen extends StatelessWidget {
             ),
             Padding(
               padding: const EdgeInsets.only(
-                  left: 32, top: 32, right: 32, bottom: 8),
+                  left: 30, top: 32, right: 32, bottom: 8),
               child: Text(
-                'Find your soul mate',
+                'Find your workout buddy',
                 textAlign: TextAlign.center,
                 style: TextStyle(
                     color: Color(Constants.COLOR_PRIMARY),

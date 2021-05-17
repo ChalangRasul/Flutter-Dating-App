@@ -7,6 +7,7 @@ import 'package:firebase_auth/firebase_auth.dart' as auth;
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:textfield_tags/textfield_tags.dart';
 
 class AccountDetailsScreen extends StatefulWidget {
   final User user;
@@ -187,48 +188,7 @@ class _AccountDetailsScreenState extends State<AccountDetailsScreen> {
                                         ),
                                         ListTile(
                                           title: Text(
-                                            'Bio',
-                                            style: TextStyle(
-                                                color: isDarkMode(context)
-                                                    ? Colors.white
-                                                    : Colors.black),
-                                          ),
-                                          trailing: ConstrainedBox(
-                                            constraints: BoxConstraints(
-                                                maxWidth: MediaQuery.of(context)
-                                                        .size
-                                                        .width *
-                                                    .5),
-                                            child: TextFormField(
-                                              onSaved: (String val) {
-                                                bio = val;
-                                              },
-                                              initialValue: user.bio,
-                                              minLines: 1,
-                                              maxLines: 3,
-                                              textAlign: TextAlign.end,
-                                              style: TextStyle(
-                                                  fontSize: 18,
-                                                  color: isDarkMode(context)
-                                                      ? Colors.white
-                                                      : Colors.black),
-                                              cursorColor: Color(COLOR_ACCENT),
-                                              textCapitalization:
-                                                  TextCapitalization.words,
-                                              keyboardType:
-                                                  TextInputType.multiline,
-                                              decoration: InputDecoration(
-                                                  border: InputBorder.none,
-                                                  hintText: 'Bio',
-                                                  contentPadding:
-                                                      EdgeInsets.symmetric(
-                                                          vertical: 5)),
-                                            ),
-                                          ),
-                                        ),
-                                        ListTile(
-                                          title: Text(
-                                            'School',
+                                            'Gym',
                                             style: TextStyle(
                                                 color: isDarkMode(context)
                                                     ? Colors.white
@@ -256,11 +216,55 @@ class _AccountDetailsScreenState extends State<AccountDetailsScreen> {
                                               keyboardType: TextInputType.text,
                                               decoration: InputDecoration(
                                                   border: InputBorder.none,
-                                                  hintText: 'School',
+                                                  hintText: 'GYM ID',
                                                   contentPadding:
                                                       EdgeInsets.symmetric(
                                                           vertical: 5)),
                                             ),
+                                          ),
+                                        ),
+                                        ListTile(
+                                          title: Text(
+                                            'Interests',
+                                            style: TextStyle(
+                                                color: isDarkMode(context)
+                                                    ? Colors.white
+                                                    : Colors.black),
+                                          ),
+                                          trailing: ConstrainedBox(
+                                            constraints: BoxConstraints(
+                                                maxWidth: MediaQuery.of(context)
+                                                        .size
+                                                        .width *
+                                                    .5),
+                                            child: TextFieldTags(
+                                                initialTags: [],
+                                                tagsStyler: TagsStyler(
+                                                    tagTextStyle: TextStyle(
+                                                        fontWeight:
+                                                            FontWeight.bold),
+                                                    tagDecoration:
+                                                        BoxDecoration(
+                                                      color: Colors.blue[300],
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              8.0),
+                                                    ),
+                                                    tagCancelIcon: Icon(
+                                                        Icons.cancel,
+                                                        size: 18.0,
+                                                        color:
+                                                            Colors.blue[900]),
+                                                    tagPadding:
+                                                        const EdgeInsets.all(
+                                                            3.0)),
+                                                textFieldStyler:
+                                                    TextFieldStyler(
+                                                        textFieldBorder:
+                                                            InputBorder.none,
+                                                        hintText: ''),
+                                                onTag: (tag) {},
+                                                onDelete: (tag) {}),
                                           ),
                                         ),
                                       ]).toList())),

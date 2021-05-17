@@ -204,12 +204,11 @@ class _SwipeScreenState extends State<SwipeScreen> {
 
   Future<void> _launchDetailsScreen(User tinderUser) async {
     CardSwipeOrientation result =
-    await Navigator.of(context).push(new MaterialPageRoute(
-        builder: (context) =>
-            UserDetailsScreen(
-              user: tinderUser,
-              isMatch: false,
-            )));
+        await Navigator.of(context).push(new MaterialPageRoute(
+            builder: (context) => UserDetailsScreen(
+                  user: tinderUser,
+                  isMatch: false,
+                )));
     if (result != null) {
       if (result == CardSwipeOrientation.LEFT) {
         controller.triggerLeft();
@@ -231,19 +230,24 @@ class _SwipeScreenState extends State<SwipeScreen> {
           onPressed: () async {
             Navigator.pop(context);
             showProgress(context, 'Blocking user...', false);
-            bool isSuccessful = await _fireStoreUtils.blockUser(
-                user, 'block');
+            bool isSuccessful = await _fireStoreUtils.blockUser(user, 'block');
             hideProgress();
             if (isSuccessful) {
               await _fireStoreUtils.onSwipeLeft(user);
               users.remove(user);
               _fireStoreUtils.updateCardStream(users);
-              Scaffold.of(context).showSnackBar(SnackBar(content: Text
-                ('${user.fullName()} has been blocked.'),),);
+              Scaffold.of(context).showSnackBar(
+                SnackBar(
+                  content: Text('${user.fullName()} has been blocked.'),
+                ),
+              );
             } else {
-              Scaffold.of(context).showSnackBar(SnackBar(content: Text
-                ('Couldn\'t block ${user
-                  .fullName()}, please try again later.'),),);
+              Scaffold.of(context).showSnackBar(
+                SnackBar(
+                  content: Text(
+                      'Couldn\'t block ${user.fullName()}, please try again later.'),
+                ),
+              );
             }
           },
         ),
@@ -252,19 +256,25 @@ class _SwipeScreenState extends State<SwipeScreen> {
           onPressed: () async {
             Navigator.pop(context);
             showProgress(context, 'Reporting user...', false);
-            bool isSuccessful = await _fireStoreUtils.blockUser(
-                user, 'report');
+            bool isSuccessful = await _fireStoreUtils.blockUser(user, 'report');
             hideProgress();
             if (isSuccessful) {
               await _fireStoreUtils.onSwipeLeft(user);
               users.removeWhere((element) => element.userID == user.userID);
               _fireStoreUtils.updateCardStream(users);
-              Scaffold.of(context).showSnackBar(SnackBar(content: Text
-                ('${user.fullName()} has been reported and blocked.'),),);
+              Scaffold.of(context).showSnackBar(
+                SnackBar(
+                  content:
+                      Text('${user.fullName()} has been reported and blocked.'),
+                ),
+              );
             } else {
-              Scaffold.of(context).showSnackBar(SnackBar(content: Text
-                ('Couldn\'t report ${user
-                  .fullName()}, please try again later.'),),);
+              Scaffold.of(context).showSnackBar(
+                SnackBar(
+                  content: Text(
+                      'Couldn\'t report ${user.fullName()}, please try again later.'),
+                ),
+              );
             }
           },
         ),
@@ -317,45 +327,26 @@ class _SwipeScreenState extends State<SwipeScreen> {
                     padding: const EdgeInsets.all(16.0),
                     child: Text(
                       'There’s no one around you. Try increasing '
-                          'the distance radius to get more recommendations.',
+                      'the distance radius to get more recommendations.',
                       textAlign: TextAlign.center,
                     ),
                   ),
                 ),
               ),
               Container(
-                height: MediaQuery
-                    .of(context)
-                    .size
-                    .height * 0.9,
-                width: MediaQuery
-                    .of(context)
-                    .size
-                    .width,
+                height: MediaQuery.of(context).size.height * 0.9,
+                width: MediaQuery.of(context).size.width,
                 child: new TinderSwapCard(
                   animDuration: 500,
                   orientation: AmassOrientation.BOTTOM,
                   totalNum: data.length,
                   stackNum: 3,
                   swipeEdge: 15,
-                  maxWidth: MediaQuery
-                      .of(context)
-                      .size
-                      .width,
-                  maxHeight: MediaQuery
-                      .of(context)
-                      .size
-                      .height,
-                  minWidth: MediaQuery
-                      .of(context)
-                      .size
-                      .width * 0.9,
-                  minHeight: MediaQuery
-                      .of(context)
-                      .size
-                      .height * 0.9,
-                  cardBuilder: (context, index) =>
-                      _buildCard(data[index]),
+                  maxWidth: MediaQuery.of(context).size.width,
+                  maxHeight: MediaQuery.of(context).size.height,
+                  minWidth: MediaQuery.of(context).size.width * 0.9,
+                  minHeight: MediaQuery.of(context).size.height * 0.9,
+                  cardBuilder: (context, index) => _buildCard(data[index]),
                   cardController: controller = CardController(),
                   swipeCompleteCallback:
                       (CardSwipeOrientation orientation, int index) async {
@@ -366,8 +357,8 @@ class _SwipeScreenState extends State<SwipeScreen> {
                           : await _fireStoreUtils.incrementSwipe();
                       if (isValidSwipe) {
                         if (orientation == CardSwipeOrientation.RIGHT) {
-                          User result = await _fireStoreUtils
-                              .onSwipeRight(data[index]);
+                          User result =
+                              await _fireStoreUtils.onSwipeRight(data[index]);
                           if (result != null) {
                             data.removeAt(index);
                             _fireStoreUtils.updateCardStream(data);
@@ -377,11 +368,9 @@ class _SwipeScreenState extends State<SwipeScreen> {
                             data.removeAt(index);
                             _fireStoreUtils.updateCardStream(data);
                           }
-                        }
-                        else if (orientation == CardSwipeOrientation.LEFT) {
+                        } else if (orientation == CardSwipeOrientation.LEFT) {
                           swipedUsers.add(data[index]);
-                          await _fireStoreUtils
-                              .onSwipeLeft(data[index]);
+                          await _fireStoreUtils.onSwipeLeft(data[index]);
                           data.removeAt(index);
                           _fireStoreUtils.updateCardStream(data);
                         }
